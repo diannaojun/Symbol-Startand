@@ -1,1 +1,71 @@
+\documentclass[16pt, a4paper]{article}
+\usepackage[UTF8]{ctex}
+%\usepackage[utf8]{inputenc}
+\usepackage[colorlinks,linkcolor=blue]{hyperref}
+\usepackage{polyglossia}
+\usepackage{fontspec}
+\setmainfont{Source Han Serif TC}
+\setCJKmainfont{Source Han Serif TC}
+\setCJKmonofont{Source Han Serif TC}
+\setCJKsansfont{Source Han Serif TC}
+\makeindex
 
+\begin{document}
+	\title{SS-7/SFNIP: Symbol and Finimed Network Interactive Protocol}
+	\author{DiannaoJun}
+	\date{NT.5-7}
+	\maketitle              % 标题页
+	\tableofcontents
+	\addcontentsline{toc}{section}{目錄}
+		\subsection{檔案信息}
+			\begin{table}[ht]\centering
+				\begin{tabular}{|c|c|c|}
+    				\hline
+    					\textbf{檔案編號} & \textbf{檔案別名} & \textbf{檔案更新時間 }\\
+					\hline
+						SS-7 & SFNIP & \today{} \\
+    					SDP-1 & ~ & ~ \\
+    				\hline
+    				\hline
+    					\textbf{檔案替代} & \textbf{檔案引用} & \textbf{檔案狀態} \\
+    				\hline
+    					SS-7/SDP-1/SINIP & SS-5 & 編寫 \\
+    				\hline
+    				\hline
+    					\multicolumn{2}{|c|}{\textbf{檔案版權}} & \textbf{編訂部門}\\
+    				\hline
+    					\multicolumn{2}{|c|}{Copyright \textcopyright{} 思博開發團隊 Symbol DT. 2019-2024} & 標準編訂組 \\
+    				\hline
+    			\end{tabular}
+    		\caption{檔案信息}\label{tab:multicolumn}\end{table}
+	\section{引言}
+		\subsection{前言}
+			思博·飛慕網路交換協議（Symbol and Finimed Network Interactive Protocol, SFNIP）是一種利用HTTP/HTTPS協議
+			（下文簡稱爲「HTTP」）進行網絡操作格式化數據交互傳輸的規則。是一種在HTTP框架內進行非Web數據傳輸，並允許使用者根據需要進行可選是
+			部分的狀態化或持久化的協議。
+		\subsection{限定詞語的使用}
+			見引用文章
+		\subsection{術語}
+			\subparagraph{請求與響應} 本條符合「HTTP伺服器-客戶機模型」所述；
+			\subparagraph{資源} 一種可以被傳遞的網路數據對象；
+			\subparagraph{客戶端} 主動發送請求的程序；
+			\subparagraph{服務端} 被動接收請求並響應資源與提供服務的程序；
+			\subparagraph{持久化（對於可持久化）} 對於資源的復利用，從而提高時間與傳輸效率或爲某些特定功能提供技術根本；
+			\subparagraph{緩存系統（對於可持久化）} 是消息本地存儲的子系統，一種用於控制資源與其他數據存儲、獲取與刪除，以在時間與空間效率上尋求平衡的系統；
+			\subparagraph{年齡（對於可持久化）} 一個消息從被獲取到現在的時間；
+			\subparagraph{壽命（對於可持久化）} 一個消息從被獲取到過期的時間，即數據的有效期；
+			\subparagraph{新鮮的（對於可持久化）} 消息在壽命之內，稱爲「新鮮的」；
+			\subparagraph{過期的（對於可持久化）} 消息在壽命之外，稱爲「過期的」。
+	\section{格式}
+		\subsection{參數}
+			\subparagraph{SFNIP版本} 位於報頭內，鍵爲「s\_version」。\textbf{應當}由客戶機指定，否則默認值爲1.1。用以識別軟體協議版本，保證兼容性。
+			同時，伺服器返回版本號\textbf{不得}高於客戶機版本；
+			\subparagraph{軟體包標識符} 位於報頭內，鍵爲「s\_appacks\_id」。用以識別具體軟體類型，使伺服器依此判斷是否有非法類型的軟體訪問。
+				注意，此項\textbf{應當}爲可視ASCII字符，且判斷時忽略大小寫的區別；
+		\subsection{請求與響應格式}
+			遵循HTTP格式，詳見具體實現。
+	\section{實現I——SFNIP-FFW協議}
+		\subsection{參數}
+			\subparagraph{SFNIP版本} 使用1.1版本的SFNIP協議。
+			\subparagraph{軟體包標識符} 軟件包爲「feynco\_finimed\_workspace」。
+\end{document}
